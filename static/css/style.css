@@ -1,0 +1,171 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    margin-right: 20px;
+}
+
+.logo img {
+    max-height: 80px;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+}
+
+.title h1 {
+    margin-right: 10px;
+    color: #333;
+    font-family: 华文新魏;
+}
+
+.current-date-time {
+    margin-left: auto;
+    color: #5b9b7e;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    font-family: 华文新魏;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.form-group input[type="file"] {
+    display: block;
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-group input[type="submit"] {
+    padding: 12px 24px;
+    font-size: 18px;
+    background: linear-gradient(to right, #4CAF50, #45a049);
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.form-group input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.form-group input[type="submit"]:active {
+    background-color: #3e874f;
+    transform: translateY(2px);
+}
+
+.form-group input[type="submit"]:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.form-group input[type="submit"] {
+    background: linear-gradient(to right, #4CAF50, #45a049);
+}
+
+.error-message {
+    color: #ff0000;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 每行5个图像容器，等分可用空间 */
+    gap: 10px; /* 图像容器之间的间距 */
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.preview-image {
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: 4px;
+}
+
+.result {
+        color: #9b989b;
+        font-size: 18px;
+        margin-top: 10px;
+    }
+
+.download-button {
+        display: inline-block;
+        padding: 12px 24px;
+        background-color: #888;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        text-decoration: none;
+        font-size: 18px;
+        margin-top: 10px;
+    }
+
+.download-button:hover {
+    background-color: #666;
+}
+
+.download-button:active {
+    background-color: #444;
+    transform: translateY(2px);
+}
+
+.progress-message {
+    color: #779b69;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+
+
