@@ -1,3 +1,4 @@
+import glob
 import os,shutil
 from config import logger
 import zipfile
@@ -9,6 +10,12 @@ def initialize_directory(directorys=[]):
     :param directory: 如果需要额外创建其他目录
     :return:
     """
+
+    # 删除当前目录下的所有img文件
+    img_exists_files = glob.glob('./*.jpg') + glob.glob('./*.png') + glob.glob('./*.jpeg')
+    for img_exists in img_exists_files:
+        os.remove(img_exists)
+
 
     if os.path.exists('result'):
         shutil.rmtree('./result')

@@ -42,43 +42,51 @@ def examine():
         img_file.save(img_path)
 
         # 判断图像是否不是jpg格式
-        if os.path.splitext(img_file.filename)[-1] != 'jpg':
+        if os.path.splitext(img_file.filename)[-1] != '.jpg':
             # 如果非jpg格式，将图像转为Jpg格式
+            print(os.path.splitext(img_file.filename)[-1])
+            print(img_path)
             img_path = convert_to_jpg(img_file.filename)
+            print(img_path)
 
 
 
         # 调用 AI_SDK 进行图像审核
         logger.info(f"正在审核 {img_path}")
-
         img_result = get_img_result(img_path=img_path)
-        conclusion = img_result['conclusion']
 
-        # 如果图像不合规
-        if conclusion == '不合规' or conclusion == '疑似':
-            msg = img_result['data'][0]['msg']
-            logger.error(img_path + " | " + conclusion)
-            result_list.append([img_path, conclusion, msg])
-
-            # 处理不合规的图像
-            wrong_img(img_path=img_path, msg=msg)
-            move_file(img_path, './result/wrong/')
-
-        # 如果图像合规
+        # 如果调用 AI_SDK 出现错误
+        if 'conclusion' not in img_result:
+            return '请检查config.py文件是否配置正确！'
         else:
-            logger.info(img_path + " | " + conclusion)
-            result_list.append([img_path, conclusion, '合规'])
-            move_file(img_path, './result/right/')
+            conclusion = img_result['conclusion']
 
-        # 将审核结果保存为 Excel 文件
-        excel_result = save_excel(result_list=result_list)
-        if excel_result[0]:
-            logger.info(excel_result[1])
-        else:
-            logger.error(excel_result[1])
 
-    # 压缩审核结果目录
-    zip_directory('./result', 'result.zip')
+            # 如果图像不合规
+            if conclusion == '不合规' or conclusion == '疑似':
+                msg = img_result['data'][0]['msg']
+                logger.error(img_path + " | " + conclusion)
+                result_list.append([img_path, conclusion, msg])
+
+                # 处理不合规的图像
+                wrong_img(img_path=img_path, msg=msg)
+                move_file(img_path, './result/wrong/')
+
+            # 如果图像合规
+            else:
+                logger.info(img_path + " | " + conclusion)
+                result_list.append([img_path, conclusion, '合规'])
+                move_file(img_path, './result/right/')
+
+            # 将审核结果保存为 Excel 文件
+            excel_result = save_excel(result_list=result_list)
+            if excel_result[0]:
+                logger.info(excel_result[1])
+            else:
+                logger.error(excel_result[1])
+
+        # 压缩审核结果目录
+        zip_directory('./result', 'result.zip')
 
     return '审核完成,点击下载结果'
 

@@ -28,7 +28,7 @@ def convert_to_jpg(image_path):
     # 删除源文件
     os.remove(image_path)
 
-    config.logger.info(f"Converted {image_path} to {output_path}")
+    config.logger.info(f"{image_path} Converted to {output_path}")
     return output_path
 
 
